@@ -21,7 +21,7 @@ if (file.substring(0, 4) !== 'http') {
   require('http').createServer(function (request, response) {
       request.addListener('end', function () {
           fileServer.serve(request, response);
-      });
+      }).resume();
   }).listen(1337);
 
   url = `http://127.0.0.1:1337/${fileName}`;
