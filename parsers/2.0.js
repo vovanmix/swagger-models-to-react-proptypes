@@ -2,7 +2,7 @@ const _ = require('lodash');
 
 const indent = function (str) {
     return _.map(str.split('\n'), function (line) {
-        return '    ' + line;
+        return '  ' + line;
     }).join('\n');
 };
 
@@ -14,13 +14,13 @@ const unknownPropType = function(props, propName, componentName) {
     return new Error('PropType could not be determined from Swagger model definition');
 };
 
-const getPropType = function (definition) {
+const getPropType = function (definition, exporting = false) {
     if (definition.enum) {
         return 'PropTypes.oneOf(' + JSON.stringify(definition.enum, null, 4) + ')';
     }
-    if (definition.$ref) {
-        const name = definition.$ref.match('#/definitions/(.*)')[1];
-        return name === 'undefined' ? missingRefPropType.toString() : 'PropTypes.' + name;
+    if (definition.$$ref && !exporting) {
+        const name = definition.$$ref.match('#/definitions/(.*)')[1];
+        return name === 'undefined' ? missingRefPropType.toString() : name;
     }
     switch (definition.type) {
     case 'object':
@@ -55,7 +55,7 @@ const getPropType = function (definition) {
 };
 
 const exportDefinition = function (definition, name) {
-    return `export const ${name} = ${getPropType(definition)};`;
+    return `export const ${name} = ${getPropType(definition, true)};`;
 };
 
 const convertDefinitionObjectToPropTypes = function (definition, name) {
@@ -75,5 +75,6 @@ module.exports = function (swagger) {
     });
 
     output.push(propTypes.join('\n\n'));
+    output.push('\n');
     return output.join('');
 };
