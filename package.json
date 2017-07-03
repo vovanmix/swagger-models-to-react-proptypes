@@ -1,5 +1,5 @@
 {
-  "name": "swagger-models-to-react-proptypes",
+  "name": "swagger-definitions-to-react-proptypes",
   "version": "1.1.0",
   "description": "CLI that generates React propType definitions from a swagger endpoint",
   "main": "bin/index.js",
@@ -11,7 +11,7 @@
     "test-2.0": "./bin/index.js http://127.0.0.1:1337/petstore-v2.0.json",
     "2.0": "(npm run fixtures) && (./bin/index.js http://127.0.0.1:1337/petstore-v2.0.json > 2.0.js)"
   },
-  "author": "Patrick Williams <pwmckenna@gmail.com>",
+  "author": "Patrick Williams <pwmckenna@gmail.com> && Vladimir Mikhaylovskiy <singingcode@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "lodash": "^3.10.0",
