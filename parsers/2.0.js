@@ -63,14 +63,17 @@ const convertDefinitionObjectToPropTypes = function (definition, name) {
 };
 
 module.exports = function (swagger) {
-    const header = 'Generated PropTypes for ' + swagger.url;
-    console.log('/**\n' + header + new Array(header.length + 1).join('-') + '\n**/\n');
+    let output = [];
 
-    console.log('import PropTypes from "prop-types";\n\n');
+    const header = 'Generated PropTypes for ' + swagger.url;
+    output.push('/**\n' + header + '\n**/\n\n');
+
+    output.push('import PropTypes from "prop-types";\n\n');
 
     const propTypes = _.map(swagger.spec.definitions, function (model, name) {
         return exportDefinition(model, name);
     });
 
-    console.log(propTypes.join('\n\n'));
+    output.push(propTypes.join('\n\n'));
+    return output.join('');
 };
