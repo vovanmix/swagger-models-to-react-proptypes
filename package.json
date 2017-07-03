@@ -1,6 +1,6 @@
 {
   "name": "swagger-definitions-to-react-proptypes",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "CLI that generates React propType definitions from a swagger endpoint",
   "main": "bin/index.js",
   "bin": "bin/index.js",
@@ -15,9 +15,8 @@
   "license": "ISC",
   "dependencies": {
     "lodash": "^3.10.0",
-    "swagger-client": "^3.0.0"
-  },
-  "devDependencies": {
+    "swagger-client": "^3.0.0",
     "node-static": "^0.7.7"
-  }
+  },
+  "devDependencies": {}
 }
