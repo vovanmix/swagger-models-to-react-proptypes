@@ -1,16 +1,24 @@
-# swagger-models-to-react-proptypes
+# swagger-definitions-to-react-proptypes
 CLI that consumes a swagger endpoint and spits out React propType definitions.
 
 ### Installation:
-__`npm install -g swagger-models-to-react-proptypes`__
+__`npm install -g swagger-definitions-to-react-proptypes`__
+
+or
+
+__`yarn add --dev swagger-definitions-to-react-proptypes`__
 
 ### Usage:
 
-__`swagger-models-to-react-proptypes http://petstore.swagger.io/v2/swagger.json`__
+__`swagger-definitions-to-react-proptypes http://petstore.swagger.io/v2/swagger.json`__
+
+__`swagger-definitions-to-react-proptypes ./swagger.yml`__
+
+__`./node_modules/bin/swagger-definitions-to-react-proptypes ./swagger.yml ./src/definitions.js`__
 
 ```js
 /**
-Generated PropTypes for http://127.0.0.1:1337/petstore-v2.0.json----------------------------------------------------------------
+Generated PropTypes for http://127.0.0.1:1337/petstore-v2.0.json
 **/
 
 import PropTypes from "prop-types";
