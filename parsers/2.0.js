@@ -39,11 +39,7 @@ const getPropType = function (definition, exporting = false) {
     case 'array':
         return 'PropTypes.arrayOf(' + getPropType(definition.items) + ')';
     case 'string':
-        if (definition.format === 'date' || definition.format === 'date-time') {
-            return 'PropTypes.date';
-        } else {
-            return 'PropTypes.string';
-        }
+        return 'PropTypes.string';
     case 'integer':
     case 'number':
         return 'PropTypes.number';
